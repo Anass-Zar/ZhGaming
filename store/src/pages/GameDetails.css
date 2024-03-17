@@ -1,0 +1,102 @@
+.details {
+  width: 80%;
+  margin: 40px auto;
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 20px;
+  align-items: center;
+}
+.image {
+  width: 90%;
+  display: flex;
+  align-items: start;
+  margin: 20px;
+}
+.poster {
+  width: 100%;
+}
+.info {
+  width: 100%;
+  flex-wrap: wrap;
+  align-content: center;
+}
+
+.game-name {
+  width: 100%;
+  font-size: 40px;
+  margin: 0 0 10px 0;
+  color: #000000; 
+}
+
+.game-price {
+  font-size: 24px;
+  margin: 0;
+  margin-right: 30px;
+  color: #002d72;
+}
+.buy {
+  display: flex;
+  align-items: center;
+}
+
+.buy-now {
+  border: 1px solid #002d72;
+  border-radius: 5px;
+  background-color: #002d72;
+  color: #fff;
+  padding: 10px 20px;
+  font-size: 18px;
+  border: none;
+  cursor: pointer;
+}
+
+.buy-now:hover {
+  background-color: #00265f;
+}
+.desc {
+  width: 100%;
+  margin: 20px 0 10px 0;
+  font-size: 18px;
+  color: #555; 
+}
+
+.game-description {
+  height: 150px;
+  margin: 0;
+  font-size: 16px;
+  line-height: 1.5;
+  color: #666;
+  max-height: 300px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 10;
+  -webkit-box-orient: vertical;
+}
+
+.game-description::after {
+  content: '...';
+  display: inline-block;
+}
+.images {
+  overflow: auto;
+  display: flex;
+  scrollbar-width: thin; 
+  scrollbar-color: #666 #ddd; 
+  padding-bottom: 2px;
+}
+.images::-webkit-scrollbar {
+  height: 10px;
+}
+.images::-webkit-scrollbar-thumb {
+  background-color: #666; 
+  border-radius: 5px; 
+}
+.images::-webkit-scrollbar-track {
+  background-color: #ddd; 
+  border-radius: 5px; 
+}
+.game-image {
+  width: 25%;
+  margin-right: 10px;
+}
