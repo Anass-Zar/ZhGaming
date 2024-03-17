@@ -29,7 +29,7 @@ function GameDetails() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get(`/api/gamedetails/${id}`);
+        const response = await axios.get(`http://localhost:3000/gamedetails/${id}`);
         setGame(response.data);
       } catch (error) {
         console.error('Error fetching data:', error);

@@ -22,7 +22,7 @@ export const Profile = () => {
       const token = localStorage.getItem('token');
       if (token) {
         const response = await axios.put(
-          '/api/profile/update',
+          'http://localhost:3000/profile/update',
           { username: newUsername, email: newEmail, password:newPassword },
           {
             headers: {
@@ -46,7 +46,7 @@ export const Profile = () => {
         const token = localStorage.getItem('token');
         if (token) {
           const response = await axios.post(
-            '/api/profile',
+            'http://localhost:3000/profile',
             {},
             {
               headers: {

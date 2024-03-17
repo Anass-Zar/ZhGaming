@@ -36,7 +36,7 @@ export const Navbar = ({ isHomePage , change , handleSearch , handleKeyPress }) 
     e.preventDefault();
     axios
       .post(
-        "/api/signup",
+        "http://localhost:3000/signup",
         { image, username, email, password, password_cf },
         { headers: { "Content-Type": "application/json" } }
       )
@@ -51,7 +51,7 @@ export const Navbar = ({ isHomePage , change , handleSearch , handleKeyPress }) 
     e.preventDefault();
     axios
       .post(
-        "/api/signin",
+        "http://localhost:3000/signin",
         { email, password },
         { headers: { "Content-Type": "application/json" } }
       )
@@ -112,7 +112,7 @@ export const Navbar = ({ isHomePage , change , handleSearch , handleKeyPress }) 
       if (token) {
         console.log("Token exists");
         const response = await axios.post(
-          "/api/home",
+          "http://localhost:3000/home",
           {},
           {
             headers: {

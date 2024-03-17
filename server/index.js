@@ -1,7 +1,7 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
-const path = require('path');
+// const path = require('path');
 const jwt = require("jsonwebtoken");
 const UsersModel = require("../server/models/users.js");
 const games = require('../server/games api/games.js'); 
@@ -20,16 +20,16 @@ mongoose
     console.log("There is a problem in MongoDB connection ====>>>>", err)
   );
 
-app.use(express.static(path.join(__dirname, '/store/dist')))
-app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, 'store', 'dist', 'index.html'))
-})
+// app.use(express.static(path.join(__dirname, '/store/dist')))
+// app.get('*', (req, res) => {
+//   res.sendFile(path.join(__dirname, 'store', 'dist', 'index.html'))
+// })
 
-app.get('/api/', cors() , async (req, res) => {
+app.get('/', cors() , async (req, res) => {
   res.json(games);
 });
 
-app.get('/api/gamedetails/:id', cors() , async (req, res) => {
+app.get('/gamedetails/:id', cors() , async (req, res) => {
   const gameId = parseInt(req.params.id);
   const game = games.find(game => game.id === gameId);
   if (game) {
@@ -37,9 +37,9 @@ app.get('/api/gamedetails/:id', cors() , async (req, res) => {
   } else {
     res.status(404).json({ error: 'Game not found' });
   }
-});
+})
 
-app.post('/api/signin', cors(), (req, res) => {
+app.post('/signin', cors(), (req, res) => {
   const { email, password } = req.body;
   UsersModel.findOne({ email: email })
     .then(user => {
@@ -59,7 +59,7 @@ app.post('/api/signin', cors(), (req, res) => {
     .catch(err => res.json({ message: "Error occurred", error: err }));
 });
 
-app.post('/api/signup', cors(), (req, res) => {
+app.post('/signup', cors(), (req, res) => {
   const { image, username, email, password, password_cf } = req.body;
   UsersModel.findOne({ email: email })
     .then(existingUser => {
@@ -80,7 +80,7 @@ app.post('/api/signup', cors(), (req, res) => {
     .catch(err => res.json({ message: "Error checking existing user", error: err }));
 });
 
-app.post("/api/home", cors() , async (req, res) => {
+app.post("/home", cors() , async (req, res) => {
   const token = req.headers.token;
   try {
     const verify = jwt.verify(token, "RANDOM_TOKEN_SECRET");
@@ -92,7 +92,7 @@ app.post("/api/home", cors() , async (req, res) => {
   }
 });
 
-app.post("/api/profile", cors(), async (req, res) => {
+app.post("/profile", cors(), async (req, res) => {
   const token = req.headers.token;
   try {
     const verify = jwt.verify(token, "RANDOM_TOKEN_SECRET");
@@ -110,7 +110,7 @@ app.post("/api/profile", cors(), async (req, res) => {
   }
 });
 
-app.put('/api/profile/update', cors(), async (req, res) => {
+app.put('/profile/update', cors(), async (req, res) => {
   const token = req.headers.token;
   const { username, email, image, password } = req.body; // Add more fields if needed
 
